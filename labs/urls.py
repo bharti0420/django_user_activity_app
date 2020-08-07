@@ -13,6 +13,7 @@ router.register(r'activityperiods', views.ActivityPeriodViewSet, basename='activ
 
 urlpatterns = [
 	path('', include(router.urls)),
-    path('activity',views.ActivityPeriodList.as_view(), name='activity_list'),
+    path('activity/',views.ActivityPeriodList.as_view(), name='activity_list'),
+    path('useractivity/',views.UserDetailList.as_view(), name='user_list'),
 	
 ]
