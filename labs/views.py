@@ -47,7 +47,7 @@ class UserDetailList(generics.ListAPIView):
             one_instance = {
                 "id" : str(i.id),
                 "real_name" : str(i.real_name),
-                "time_zone" : str(i.time_zone),
+                "tz" : str(i.tz),
                 "activity_period" : getActivity(i.id)
             }
             user_activity_data.append(one_instance)

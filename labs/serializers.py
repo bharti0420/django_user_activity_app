@@ -13,4 +13,4 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         depth = 1
-        fields = ('id', 'real_name', 'time_zone', 'activity_period')
+        fields = ('id', 'real_name', 'tz', 'activity_period')

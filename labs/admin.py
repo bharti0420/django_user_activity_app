@@ -7,5 +7,5 @@ class UserAdmin(admin.ModelAdmin):
 admin.site.register(User, UserAdmin)
 
 class ActivityPeriodAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('user', 'start_time', 'end_time')
 admin.site.register(ActivityPeriod, ActivityPeriodAdmin)

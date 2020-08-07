@@ -21,7 +21,7 @@ TIMEZONES_CHOICES = (
 class User(AbstractUser):
     username = models.CharField(blank=True, null=True, max_length=50)
     real_name = models.CharField(max_length=50, unique=True)
-    time_zone = models.CharField(max_length=100, blank=True, null=True, choices=TIMEZONES_CHOICES, default=TIMEZONES_ASIA)
+    tz = models.CharField(max_length=100, blank=True, null=True, choices=TIMEZONES_CHOICES, default=TIMEZONES_ASIA)
 
     USERNAME_FIELD = 'real_name'
     REQUIRED_FIELDS = ['username']
