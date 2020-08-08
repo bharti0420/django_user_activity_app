@@ -1,4 +1,4 @@
-# user_activity
+# User Activity
 
 ## Introduction:-
 This app stores the information of user and there work activities. we can store the data using custom management command. One API is provided to                    get all the user data and their respective activities list in the form of JSON.
@@ -9,7 +9,7 @@ This app stores the information of user and there work activities. we can store 
   - DRF 3.11.1
 
 ## Custom Management Commad:- 
-  - command: python manage.py populatedbdata --path "path of json file"
+  - command: python manage.py populatedbdata  --path  "path of json file"
   - Json file should be formatted like shown below:
       
       ![json](https://user-images.githubusercontent.com/31935438/89707884-fdcf6680-d98f-11ea-934d-1b1618c3d357.png)
@@ -27,4 +27,5 @@ This app stores the information of user and there work activities. we can store 
       - http://vidya.pythonanywhere.com/api/useractivity/
   - The output of this API will like this-
     
-  
+       - ![apioutput](https://user-images.githubusercontent.com/31935438/89708049-797de300-d991-11ea-9dda-2548ac234479.png)
+
