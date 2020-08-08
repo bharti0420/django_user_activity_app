@@ -19,6 +19,6 @@ from labs.urls import urlpatterns as labs_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('labs-api/', include('rest_framework.urls')),
+    # path('labs-api/', include('rest_framework.urls')),
     path('api/', include('labs.urls')),
 ] 

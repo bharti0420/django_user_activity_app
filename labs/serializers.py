@@ -7,8 +7,7 @@ class ActivityPeriodSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class UserSerializer(serializers.ModelSerializer):
-    # activityperiod = ActivityPeriodSerializer(read_only=True)
-    activity_period = serializers.ListField(child=serializers.CharField())
+    activity_period = serializers.ListField(child=serializers.JSONField())
 
     class Meta:
         model = User

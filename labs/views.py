@@ -1,31 +1,22 @@
 from django.shortcuts import render
 from .models import ActivityPeriod, User
 from .serializers import ActivityPeriodSerializer, UserSerializer
-from rest_framework import mixins, viewsets, permissions, generics
+from rest_framework import  viewsets, permissions, generics
 import json
 
 # Create your views here.
 
-class ActivityPeriodViewSet( 
-        mixins.RetrieveModelMixin,
-        viewsets.GenericViewSet):
-    serializer_class = ActivityPeriodSerializer
-    permission_classes = [permissions.AllowAny]
-    queryset = ActivityPeriod.objects.all()
-
-
-class ActivityPeriodList(generics.ListAPIView):
-    serializer_class = ActivityPeriodSerializer
-    permission_classes = [permissions.AllowAny]
-
-    def get_queryset(self):
-        return ActivityPeriod.objects.all()
-
+'''
+    format_date function will convert datetime into human redailble form like 'Aug 07 2020 01:20PM'
+'''
 def format_date(input_date):
     return input_date.strftime("%b %d %Y %I:%M%p")
 
-def getActivity(id):
 
+'''
+    get_activity finction is for getting all activity of a user from ActivityPeriod model based on user id.
+'''
+def get_activity(id):
     data = ActivityPeriod.objects.filter(user=id)
     final_data = []
     for i in data:
@@ -34,6 +25,7 @@ def getActivity(id):
         one_instace["end_time"] = str(format_date(i.end_time))
         final_data.append(one_instace)
     return final_data
+
 
 class UserDetailList(generics.ListAPIView):
     serializer_class = UserSerializer
@@ -48,14 +40,8 @@ class UserDetailList(generics.ListAPIView):
                 "id" : str(i.id),
                 "real_name" : str(i.real_name),
                 "tz" : str(i.tz),
-                "activity_period" : getActivity(i.id)
+                "activity_period" : get_activity(i.id)
             }
             user_activity_data.append(one_instance)
-        final_user_activity = {
-            "ok": True,
-            "members": user_activity_data
-        }
-        return user_activity_data # uj change ho gaya mera ab dekho k
-
-# ocnfirmed vahi issue hai serializer ka suno to dekho kaise krte hai custom sendya fir extra attribute
-# yahi ho na haan 
+        
+        return user_activity_data 
